@@ -2,7 +2,7 @@ import React from "react";
 import styled, {css} from 'styled-components';
 import {Link} from 'react-router-dom';
 import { auth } from "./shared/firebase";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 // 아이콘
 import PersonIcon from '@mui/icons-material/Person';
