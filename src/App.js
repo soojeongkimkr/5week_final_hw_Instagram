@@ -8,15 +8,26 @@ import Home from './Home'
 import Signup from "./Signup";
 import Login from "./Login";
 import Mypage from "./Mypage";
+import Write from "./Write";
 
 // 스타일
 import GlobalStyles from "./GlobalStyles";
 import theme from './theme';
 
 // 리덕스
-
+import {useDispatch} from "react-redux";
+import {loadPostFB} from "./redux/module/home";
+import {loadUserFB} from "./redux/module/user"
 
 function App() {
+
+  const dispatch = useDispatch()
+
+    React.useEffect(()=> {
+      dispatch(loadUserFB());
+    }, [])
+
+
   return (
     <ThemeProvider theme = {theme}>
       <div className="App">
@@ -28,6 +39,7 @@ function App() {
               <Route path='/signup' element={<Signup/>}></Route>
               <Route path='/login' element={<Login/>}></Route>
               <Route path='/mypage' element={<Mypage/>}></Route>
+              <Route path='/post' element={<Write/>}></Route>
             </Routes>
           </Container>
       </div>

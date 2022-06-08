@@ -1,6 +1,6 @@
 import React from "react";
 import styled, {css} from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { auth } from "./shared/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -50,7 +50,7 @@ const Header = (props) => {
             {is_login ? <Link to='/'><div onClick={logout}>Logout</div></Link> : <Link to='./login'><div>Login</div></Link>}
             
             {/* 게시글 작성 버튼 */}
-            {is_login ? <CreateIcon style={{marginLeft: '1.8vw'}}/> : ''}
+            {is_login ? <Link to='/post'><CreateIcon style={{marginLeft: '1.8vw'}}/></Link> : ''}
             {/* 마이페이지 버튼 */}
             {is_login ? <Link to ='/mypage'><PersonIcon style={{marginLeft: '1.5vw'}}/></Link> : ''}
             {/* 알림 버튼 */}
