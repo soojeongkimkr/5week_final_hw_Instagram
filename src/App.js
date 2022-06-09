@@ -9,6 +9,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Mypage from "./Mypage";
 import Write from "./Write";
+import Postdetail from "./Postdetail";
 
 // 스타일
 import GlobalStyles from "./GlobalStyles";
@@ -16,7 +17,6 @@ import theme from './theme';
 
 // 리덕스
 import {useDispatch} from "react-redux";
-import {loadPostFB} from "./redux/module/home";
 import {loadUserFB} from "./redux/module/user"
 
 function App() {
@@ -40,6 +40,8 @@ function App() {
               <Route path='/login' element={<Login/>}></Route>
               <Route path='/mypage' element={<Mypage/>}></Route>
               <Route path='/post' element={<Write/>}></Route>
+              <Route path='/post/:id' element={<Write/>}></Route>
+              <Route path='/post/:id/detail' element={<Postdetail/>}></Route>
             </Routes>
           </Container>
       </div>

@@ -1,4 +1,6 @@
-import {db} from "../../shared/firebase";
+import {db } from "../../shared/firebase";
+
+
 
 // firebase 데이터 제어하는 훅들
 import {
@@ -16,10 +18,10 @@ const ADD = "user/ADD"
 
 const initialState = {
   list: [
-    {
-      name:'',
-      user_id:''
-  }
+  //   {
+  //     name:'',
+  //     user_id:''
+  // }
   ]
 }
 
@@ -47,6 +49,7 @@ export const loadUserFB = () => {
 };
 
 export const addUserFB = (user_list) => {
+  
   return async function (dispatch){
     const user_data = await addDoc(collection(db, 'users'), user_list);
     const _user_data = {id: user_data, ...user_list}

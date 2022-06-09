@@ -1,6 +1,7 @@
 import React from "react";
 import styled, {css} from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import { auth } from "./shared/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -12,9 +13,13 @@ import CreateIcon from '@mui/icons-material/Create';
 
 
 const Header = (props) => {
+  let date = new Date().toString().slice(0,21).split(' ').join('')
+  const userList = useSelector((state)=> state.user.list)
+  const navigate = useNavigate();
   
   // 로그인
   const [is_login, setIsLogin] = React.useState(false);
+  const [ email, setEmail ] = React.useState(null);
 
   const loginCheck = async (user) => {
     if (user){
@@ -22,6 +27,8 @@ const Header = (props) => {
     } else {
       setIsLogin(false);
     }
+    setEmail(user.email)
+    
   };
 
   React.useEffect(()=> {
@@ -32,10 +39,15 @@ const Header = (props) => {
   const logout = () => {
     signOut(auth).then(()=>{
       setIsLogin(false);
+      navigate(`/`)
     });
   };
-  
 
+  // 현재 로그인된 유저의 이름/아이디
+  const user_name = userList && userList.filter((v,i)=>
+    v.user_id === email
+  )
+  
 
   return (
     <div>

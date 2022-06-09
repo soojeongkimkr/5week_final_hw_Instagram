@@ -30,7 +30,7 @@ const Login = () => {
       <input ref={id_ref} className="box" type="text" placeholder="Id"></input>
         
       {/* 비밀번호 */}
-      <input ref={pw_ref} className="box" type="text" placeholder="Password"></input>
+      <input ref={pw_ref} className="box" type="password" placeholder="Password"></input>
       <Link to ='/'><Button onClick={loginFB} variant="contained" style={{marginTop:'1.5em'}}>Login</Button></Link>
     </LoginContainer>
   )
